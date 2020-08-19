@@ -60,17 +60,17 @@ export class GameField {
   }
 
   getUnvisitedNeighbour(cell: Cell): Cell | undefined {
-    const [cellI, cellJ] = cell;
-    const leftCell = [cellI, cellJ - 1] as Cell;
-    const topCell = [cellI - 1, cellJ] as Cell;
-    const rightCell = [cellI, cellJ + 1] as Cell;
-    const bottomCell = [cellI + 1, cellJ] as Cell;
+    const [i, j] = cell;
+    const leftCell = j - 1 >= 0 ? [i, j - 1] as Cell : undefined;
+    const topCell = i - 1 >= 0 ? [i - 1, j] as Cell : undefined;
+    const rightCell = j + 1 < this.colsCount ? [i, j + 1] as Cell : undefined;
+    const bottomCell = i + 1 < this.rowsCount ? [i + 1, j] as Cell : undefined;
     const cellsAround = [leftCell, topCell, rightCell, bottomCell];
     const startFrom = Math.floor(Math.random() * cellsAround.length);
 
-    for (let i = 0; i < cellsAround.length; i++) {
-      const [m, n] = cellsAround[(startFrom + i) % cellsAround.length];
-      if (m >= 0 && n >= 0 && m < this.rowsCount && n < this.colsCount && !this.isVisited([m, n])) return [m, n];
+    for (let index = 0; index < cellsAround.length; index++) {
+      const cell = cellsAround[(startFrom + index) % cellsAround.length];
+      if (cell && !this.isVisited(cell)) return cell;
     }
 
     return undefined;
