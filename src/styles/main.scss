@@ -1,5 +1,65 @@
 @import "~bootstrap/scss/bootstrap";
 
-body {
-  background-color: tomato;
+$cell-background-color: #fecc50;
+$cell-border-color: #1e0521;
+
+.dfs-field {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dfs-row {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+
+  &:first-child .dfs-cell {
+    border-top: 2px solid $cell-border-color;
+  }
+
+  &:last-child .dfs-cell {
+    border-bottom: 2px solid $cell-border-color;
+  }
+}
+
+.dfs-cell {
+  background-color: $cell-background-color;
+  width: 100%;
+  will-change: border, padding;
+
+  border: 1px solid $cell-border-color;
+
+  &:first-child {
+    border-left: 2px solid $cell-border-color;
+  }
+
+  &:last-child {
+    border-right: 2px solid $cell-border-color;
+  }
+
+  &--visited {
+    background-color: darken($cell-background-color, 20%);
+  }
+
+  &--visited-left {
+    border-left: none;
+    padding-left: 1px;
+  }
+
+  &--visited-top {
+    border-top: none;
+    padding-top: 1px;
+  }
+
+  &--visited-right {
+    border-right: none;
+    padding-right: 1px;
+  }
+
+  &--visited-bottom {
+    border-bottom: none;
+    padding-bottom: 1px;
+  }
 }

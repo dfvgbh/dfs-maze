@@ -25,6 +25,9 @@ module.exports = {
       hash: true,
     })
   ],
+  resolve: {
+    extensions: ['.js', '.ts']
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
