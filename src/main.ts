@@ -28,4 +28,4 @@ visited.push(startCell);
       visited.pop();
     }
   }
-})()
+})();

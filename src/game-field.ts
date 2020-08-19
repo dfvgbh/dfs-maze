@@ -85,11 +85,11 @@ export class GameField {
     let fieldTemplate = '';
 
     for (let row = 0; row < this.rowsCount; row++) {
-      fieldTemplate += `<div class="dfs-row">`;
+      fieldTemplate += '<div class="dfs-row">';
       for (let col = 0; col < this.colsCount; col++) {
         fieldTemplate += `<div class="dfs-cell" data-role="cell-${row}-${col}"></div>`;
       }
-      fieldTemplate += `</div>`;
+      fieldTemplate += '</div>';
     }
 
     return fieldTemplate;
